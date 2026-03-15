@@ -4,15 +4,13 @@ WORKDIR /app
 
 # Copy dependency files
 COPY package.json package-lock.json ./
-
-# Install production dependencies only
-RUN npm ci --omit=dev
+RUN npm install
 
 # Copy application source code
-COPY src/ ./src/
+COPY . .
 
 # Expose port (default 3000)
-EXPOSE 3000
+EXPOSE 5050
 
 # Run the app
 CMD ["node", "src/index.js"]
